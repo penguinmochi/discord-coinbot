@@ -1,6 +1,10 @@
-FROM python:3.11
+FROM python:3.11-slim
+
 WORKDIR /bot
-COPY requirements.txt /bot/
-RUN pip install -r requirements.txt
-COPY . /bot
-CMD python main.py
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python3", "bot.py"]
